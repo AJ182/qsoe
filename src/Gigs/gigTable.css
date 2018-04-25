@@ -1,0 +1,27 @@
+
+.gigTable__table {
+    width: 800px;
+    border-collapse: collapse;
+    margin: 0 auto;
+    font-size: 24px;
+}
+
+.gigTable__tr {
+
+}
+
+.gigTable__th {
+    font-size: 26px;
+    padding: 0 0 20px 0;
+}
+
+.gigTable__td {
+    border-top: 2px solid #ffffff;
+    padding: 20px;
+}
+
+.gigTable__tableHeading {
+    font-size: 30px;
+    padding: 20px 0 40px 0;
+    font-weight: 600;
+}
