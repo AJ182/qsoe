@@ -2,7 +2,7 @@
 .albumArt {
     display: flex;
     justify-content: space-between;
-    padding: 100px 0 20px 0;
+    padding: 50px 0 20px 0;
     flex-wrap: wrap;
     width: 80%;
     margin: 0 auto;
@@ -15,6 +15,12 @@
     left: 0;
     right: 0;
     bottom: 0;
+}
+
+.albumArt__title {
+    text-align: center;
+    font-size: 48px;
+    text-decoration: underline;
 }
 
 .albumArt__wrapper {
@@ -60,6 +66,16 @@
 
 .albumArt__journey {
     background: url('https://f4.bcbits.com/img/a1024485109_10.jpg') no-repeat 50% 50%;
+    height: 300px;
+    width: 300px;
+    background-size: cover;
+    transform: rotate(5deg);
+    border: 2px solid black;
+    outline: 4px solid white;
+}
+
+.albumArt__waxLyrical {
+    background: url('https://f4.bcbits.com/img/a1008402844_10.jpg') no-repeat 50% 50%;
     height: 300px;
     width: 300px;
     background-size: cover;

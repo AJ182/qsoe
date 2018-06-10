@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import GigTable from './Gigs/GigTable';
 import AlbumArt from './AlbumArt';
+import Footer from './Footer';
 
 class App extends Component {
   render() {
@@ -11,8 +12,9 @@ class App extends Component {
           <div className="app__headerLogo" />
           <h1 className="App-title">Quaintest Show on Earth</h1>
         </header>
-        <GigTable />
-        <AlbumArt /> 
+        {/* <GigTable /> */}
+        <AlbumArt />
+        <Footer />
       </div>
     );
   }
