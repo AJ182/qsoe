@@ -24,10 +24,24 @@ class App extends Component {
     render() {
         return (
           <div className="App">
+
+              <div className="app_spotifyCollapsed" onClick={this.openSpotify} >
+                  Open Spotify Player
+              </div>
             <header className="App-header">
               <div className="app__headerLogo" />
-              <h1 className="App-title">Quaintest Show on Earth</h1>
             </header>
+
+            <div className={this.state.showSpotify ? "app__spotifyPlayer" : "app__spotifyPlayer--hidden"}>
+                {this.state.showSpotify && (
+                    <div>
+                        <iframe src="https://open.spotify.com/embed/artist/1ZCYsLDNK5G2MLQVj5mzEh" width="400" height="420" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+                        <div onClick={this.closeSpotify} className="app__hideSpotify">
+                            hide
+                        </div>
+                    </div>
+                )}
+            </div>
 
             <p className="app__about">
                 An alternative folk band from Wigan<br/>
@@ -50,23 +64,6 @@ class App extends Component {
             {/* <GigTable /> */}
             <AlbumArt />
             <Footer />
-
-            <div className="app_spotifyCollapsed" onClick={this.openSpotify} >
-                Open Spotify Player
-            </div>
-
-
-            <div className={this.state.showSpotify ? "app__spotifyPlayer" : "app__spotifyPlayer--hidden"}>
-                {this.state.showSpotify && (
-                    <div>
-                        <iframe src="https://open.spotify.com/embed/artist/1ZCYsLDNK5G2MLQVj5mzEh" width="400" height="420" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
-                        <div onClick={this.closeSpotify} className="app__hideSpotify">
-                            hide
-                        </div>
-                    </div>
-                )}
-            </div>
-
           </div>
         );
     }
