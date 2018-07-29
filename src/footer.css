@@ -11,3 +11,7 @@
 .footer__link:hover {
     color: yellow;
 }
+
+.footer__facebook {
+    padding: 0 0 10px 0;
+}
