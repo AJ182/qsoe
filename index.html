@@ -74,25 +74,16 @@
 							</section>
 
 						<!-- First Section -->
-							<!--<section id="first" class="main special">
+							<section id="first" class="main special">
 								<header class="major">
 									<h2>Live Shows</h2>
 								</header>
-								<ul class="features">
+								<ul class="features" id='gigList'>
 									<li>
 
 										<h3 class="gig">Lechlade Festival</h3>
-										<p>24th May </br> Riverside Park, Lechlade</p>
-									</li>
-									<li>
-
-										<h3 class="gig">Uklele Festival of Wales</h3>
-										<p>29th June </br> Swansea, Wales</p>
-									</li>
-									<li>
-
-										<h3 class="gig">Uke-A-Bay</h3>
-										<p>9th August </br> Colwyn Bay, Wales</p>
+                                        <p>24th May </br> Riverside Park, Lechlade</p>
+                                        some note I made to test
 									</li>
 								</ul>
 								<footer class="major">
@@ -100,7 +91,7 @@
 										<li><a href="https://www.facebook.com/pg/qsoearth/events/?ref=page_internal" class="button">Live Shows</a></li>
 									</ul>
 								</footer>
-							</section>-->
+							</section>
 
 						<!-- Second Section -->
 							<section id="second" class="main special">
@@ -132,6 +123,11 @@
 									<li class="style5">
 										<a class="photoStripItem" href="https://qsoe.bandcamp.com/album/wax-lyrical" target="_blank">
 											<img class="photoStripItem" src="https://f4.bcbits.com/img/a1008402844_10.jpg" alt="" />
+										</a>
+                                    </li>
+                                    <li class="style3">
+										<a class="photoStripItem" href="https://qsoe.bandcamp.com/album/family-and-the-places-we-used-to-call-home-live-from-the-lounge" target="_blank">
+											<img class="photoStripItem" src="https://f4.bcbits.com/img/a3325619187_16.jpg" alt="" />
 										</a>
 									</li>
 								</ul>
@@ -187,7 +183,7 @@
 								<li><a href="https://open.spotify.com/artist/1ZCYsLDNK5G2MLQVj5mzEh" class="icon fa-spotify alt"><span class="label">Spotify</span></a></li>
 							</ul>
 						</section>
-						<p class="copyright">&copy; The Quaintest Show on Earth. Design: <a href="https://html5up.net">HTML5 UP</a>.</p>
+						<p class="copyright">&copy; The Quaintest Show on Earth. Original Design: <a href="https://html5up.net">HTML5 UP</a>, adapted by Arnold Foster</p>
 					</footer>
 
 			</div>
@@ -199,7 +195,43 @@
 			<script src="assets/js/browser.min.js"></script>
 			<script src="assets/js/breakpoints.min.js"></script>
 			<script src="assets/js/util.js"></script>
-			<script src="assets/js/main.js"></script>
+            <script src="assets/js/main.js"></script>
+            
+            <!-- The core Firebase JS SDK is always required and must be listed first -->
+            <script src="https://www.gstatic.com/firebasejs/7.16.1/firebase-app.js"></script>
 
+            <!-- Add SDKs for Firebase products that you want to use
+                https://firebase.google.com/docs/web/setup#available-libraries -->
+            <script src="https://www.gstatic.com/firebasejs/7.16.1/firebase-firestore.js"></script>
+
+            <script>
+                // Your web app's Firebase configuration
+                var firebaseConfig = {
+                  apiKey: "AIzaSyBkNIG1Ek45XcnwA0bj4x1CirveQtOD4dQ",
+                  authDomain: "prospectorrecords-76f40.firebaseapp.com",
+                  databaseURL: "https://prospectorrecords-76f40.firebaseio.com",
+                  projectId: "prospectorrecords-76f40",
+                  storageBucket: "prospectorrecords-76f40.appspot.com",
+                  messagingSenderId: "1034512554307",
+                  appId: "1:1034512554307:web:cdcf9ce01adc369d48f7f6"
+                };
+                // Initialize Firebase
+                var firebase = firebase.initializeApp(firebaseConfig);
+                // Get a reference to the storage service, which is used to create references in your storage bucket
+                var firestore = firebase.firestore();
+
+                var data = {} ;
+                firebase.firestore().collection('users').doc('OwGoFsRyzRZT4ZDlpntujCDVlW83').collection('gigs').get()
+                    .then((data) => {
+                        data.docs.map((doc) => {
+                            doc = { id: doc.id, ...doc.data() };
+                            console.log('doc', doc)
+                            var gigItem = `<h3 class="gig">${doc.name}</h3><p>${doc.date}</br>${doc.location}</p><p>${doc.note}</p>`;
+                            var item = document.getElementById('gigList').appendChild(document.createElement("LI"));
+                            item.innerHTML = gigItem;
+                        });
+
+                    })
+              </script>
 	</body>
 </html>
