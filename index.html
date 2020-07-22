@@ -79,16 +79,15 @@
 									<h2>Live Shows</h2>
 								</header>
 								<ul class="features" id='gigList'>
-									<li>
-
+									<!-- <li>
 										<h3 class="gig">Lechlade Festival</h3>
                                         <p>24th May </br> Riverside Park, Lechlade</p>
                                         some note I made to test
-									</li>
+									</li> -->
 								</ul>
 								<footer class="major">
 									<ul class="actions special">
-										<li><a href="https://www.facebook.com/pg/qsoearth/events/?ref=page_internal" class="button">Live Shows</a></li>
+										<li id="buttonifgigs"></li>
 									</ul>
 								</footer>
 							</section>
@@ -196,6 +195,7 @@
 			<script src="assets/js/breakpoints.min.js"></script>
 			<script src="assets/js/util.js"></script>
             <script src="assets/js/main.js"></script>
+            <script src="https://unpkg.com/dayjs@1.8.21/dayjs.min.js"></script>
             
             <!-- The core Firebase JS SDK is always required and must be listed first -->
             <script src="https://www.gstatic.com/firebasejs/7.16.1/firebase-app.js"></script>
@@ -220,13 +220,34 @@
                 // Get a reference to the storage service, which is used to create references in your storage bucket
                 var firestore = firebase.firestore();
 
-                var data = {} ;
+                dayjs.locale('')
+
                 firebase.firestore().collection('users').doc('OwGoFsRyzRZT4ZDlpntujCDVlW83').collection('gigs').get()
                     .then((data) => {
-                        data.docs.map((doc) => {
-                            doc = { id: doc.id, ...doc.data() };
+                        var docs = data.docs.map((doc) => {
+                            return { id: doc.id, ...doc.data() }                       
+                        })
+                        
+                        docs = docs.filter((gig) => !dayjs(gig.date).isBefore(dayjs()))
+
+                        docs = docs.sort((a, b) => {
+                            return !dayjs(a.date).isBefore(dayjs(b.date))
+                        })
+
+                        if(docs.length && docs.length >= 6) {
+                            docs = docs.slice(0, 6)
+                        }
+
+                        var cta = `We don't have anything upcoming at the moment</br>Contact us at <a href="mailto:qsoearth@gmail.com">qsoearth@gmail.com</a> to book a show`
+                        if(docs.length > 0) {
+                            cta = `<a href="https://www.facebook.com/pg/qsoearth/events/?ref=page_internal" class="button">Live Shows</a>`
+                        }
+
+                        document.getElementById('buttonifgigs').innerHTML = cta                
+
+                        docs.map((doc) => {
                             console.log('doc', doc)
-                            var gigItem = `<h3 class="gig">${doc.name}</h3><p>${doc.date}</br>${doc.location}</p><p>${doc.note}</p>`;
+                            var gigItem = `<h3 class="gig">${doc.name}</h3><p>${doc.date}</br>${doc.location}</br><span style="font-size: 18px">${doc.note}</span></p>`;
                             var item = document.getElementById('gigList').appendChild(document.createElement("LI"));
                             item.innerHTML = gigItem;
                         });
