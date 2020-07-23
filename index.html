@@ -30,10 +30,11 @@
 				<!-- Nav -->
 					<nav id="nav">
 						<ul>
-							<li><a href="#intro" class="active">The Band</a></li>
+                            <li><a href="#intro" class="active">The Band</a></li>
+                            <li><a href="#cta">Recent posts</a></li>
 							<li><a href="#first">Live Shows</a></li>
-							<li><a href="#second">Our Music</a></li>
-							<!-- <li><a href="#cta">Contact</a></li> -->
+                            <li><a href="#second">Our Music</a></li>
+                            <li><a href="#contact">Contact</a></li>
 						</ul>
 					</nav>
 
@@ -163,9 +164,9 @@
 
 				<!-- Footer -->
 					<footer id="footer">
-						<section>
+						<section id="contact">
 							<h2>Thanks for visiting</h2>
-							<p>If you wish to find out more, or books us for a show, get in touch by email (<a href="mailto:qsoearth@gmail.com">qsoearth@gmail.com</a>), or message us on <a href="https://www.facebook.com/qsoearth/">Facebook</a>.</p>
+							<p>If you wish to find out more, or books us for a show, get in touch by email (<a href="mailto:qsoearth@gmail.com">qsoearth@gmail.com</a>), or message us on <a href="https://www.facebook.com/qsoearth/" target="_blank">Facebook</a>.</p>
 							<!-- <ul class="actions">
 								<li><a href="generic.html" class="button">Learn More</a></li>
 							</ul> -->
@@ -181,14 +182,14 @@
 								<dd><a href="mailto:qsoearth@gmail.com">qsoearth@gmail.com</a></dd>
 							</dl>
 							<ul class="icons">
-								<li><a href="https://twitter.com/qsoearth?lang=en" class="icon fa-twitter alt"><span class="label">Twitter</span></a></li>
-								<li><a href="https://www.facebook.com/qsoearth/" class="icon fa-facebook alt"><span class="label">Facebook</span></a></li>
-								<li><a href="https://qsoe.bandcamp.com/" class="icon fa-bandcamp alt"><span class="label">Bandcamp</span></a></li>
-								<li><a href="https://www.youtube.com/channel/UCQNL7XhbcAW0XFaNi3NBOfg" class="icon fa-youtube alt"><span class="label">Youtube</span></a></li>
-								<li><a href="https://open.spotify.com/artist/1ZCYsLDNK5G2MLQVj5mzEh" class="icon fa-spotify alt"><span class="label">Spotify</span></a></li>
+								<li><a href="https://twitter.com/qsoearth?lang=en" target="_blank" class="icon fa-twitter alt"><span class="label">Twitter</span></a></li>
+								<li><a href="https://www.facebook.com/qsoearth/" target="_blank" class="icon fa-facebook alt"><span class="label">Facebook</span></a></li>
+								<li><a href="https://qsoe.bandcamp.com/" target="_blank" class="icon fa-bandcamp alt"><span class="label">Bandcamp</span></a></li>
+								<li><a href="https://www.youtube.com/channel/UCQNL7XhbcAW0XFaNi3NBOfg" target="_blank" class="icon fa-youtube alt"><span class="label">Youtube</span></a></li>
+								<li><a href="https://open.spotify.com/artist/1ZCYsLDNK5G2MLQVj5mzEh" target="_blank" class="icon fa-spotify alt"><span class="label">Spotify</span></a></li>
 							</ul>
 						</section>
-						<p class="copyright">&copy; The Quaintest Show on Earth. Original Design: <a href="https://html5up.net">HTML5 UP</a>, adapted by Arnold Foster</p>
+						<p class="copyright">&copy; The Quaintest Show on Earth. Original Design: <a href="https://html5up.net" target="_blank">HTML5 UP</a>, adapted by Arnold Foster</p>
 					</footer>
 
 			</div>
@@ -254,7 +255,7 @@
 
                         var cta = `We don't have anything upcoming at the moment, come back soon!</br>Or, contact us at <a href="mailto:qsoearth@gmail.com">qsoearth@gmail.com</a> to book a show.`
                         if(docs.length > 0) {
-                            cta = `<a href="https://www.facebook.com/pg/qsoearth/events/?ref=page_internal" class="button">Live Shows</a>`
+                            cta = `<a href="https://www.facebook.com/pg/qsoearth/events/?ref=page_internal" target="_blank" class="button">Live Shows</a>`
                         }
 
                         document.getElementById('buttonifgigs').innerHTML = cta                
