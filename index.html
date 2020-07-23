@@ -220,15 +220,22 @@
                 // Get a reference to the storage service, which is used to create references in your storage bucket
                 var firestore = firebase.firestore();
 
-                dayjs.locale('')
+                dayjs.locale('en-gb')
 
-                firebase.firestore().collection('users').doc('OwGoFsRyzRZT4ZDlpntujCDVlW83').collection('gigs').get()
+                firebase.firestore().collection('users').doc('ChQ5aXKK2OcupCahrFBrVwFmRkW2').collection('gigs').get()
                     .then((data) => {
                         var docs = data.docs.map((doc) => {
-                            return { id: doc.id, ...doc.data() }                       
+                            var doc = { id: doc.id, ...doc.data() }         
+                            var date = doc.date.split('/');
+                            date = date[2] + '-' + date[1]  + '-' + date[0]
+                            doc.date = date
+                            return doc
                         })
                         
-                        docs = docs.filter((gig) => !dayjs(gig.date).isBefore(dayjs()))
+                        docs = docs.filter((gig) => {
+                            console.log('TEST', dayjs(), gig.date, dayjs(gig.date), dayjs(gig.date).isBefore(dayjs()))
+                            return dayjs().subtract(2, 'day').isBefore(dayjs(gig.date))
+                        })
 
                         docs = docs.sort((a, b) => {
                             return !dayjs(a.date).isBefore(dayjs(b.date))
@@ -246,6 +253,9 @@
                         document.getElementById('buttonifgigs').innerHTML = cta                
 
                         docs.map((doc) => {
+                            var date = doc.date.split('-');
+                            date = date[2] + '/' + date[1]  + '/' + date[0]
+                            doc.date = date
                             console.log('doc', doc)
                             var gigItem = `<h3 class="gig">${doc.name}</h3><p>${doc.date}</br>${doc.location}</br><span style="font-size: 18px">${doc.note}</span></p>`;
                             var item = document.getElementById('gigList').appendChild(document.createElement("LI"));
