@@ -82,6 +82,24 @@
 									<li><a href="https://www.youtube.com/channel/UCQNL7XhbcAW0XFaNi3NBOfg" target="_blank" class="icon fa-youtube alt"><span class="label">Youtube</span></a></li>
 									<li><a href="https://open.spotify.com/artist/1ZCYsLDNK5G2MLQVj5mzEh" target="_blank" class="icon fa-spotify alt"><span class="label">Spotify</span></a></li>
                                 </ul>
+                                
+                            </section>
+
+                            <section class="main special">
+                                <div class="content">
+                                    <header class="major">
+                                        <h2>We are currently crowdfunding for charity with our latest single</h2>
+                                    </header>
+                                    <div class="cf_widget_container_container">
+                                        <div class="cf_widget_container_background" > </div>
+                                        <div class="flex-centered">
+                                            <script type="text/javascript" src="https://www.crowdfunder.co.uk/good-old-days-letshangon-charity-single/widget">
+                                                
+                                            </script>
+                                        </div>
+                                    </div>
+
+                                </div>
                             </section>
                             
                             
@@ -296,6 +314,12 @@
                             item.innerHTML = gigItem;
                         });
 
+                        // var background = document.createElement("div")
+                        // background.className = "cf_widget_container_background"
+                        // background.innerHTML = '<span/>'
+                        document.getElementsByClassName('cf_widget_container')[0].className = 'cf_widget_container cf_widget_container_adjuster'
+                        document.getElementsByClassName('cf_widget_button')[0].id = 'cf_widget_button_adjuster'
+                        // var item = document.getElementsByClassName('cf_widget_container')[0].appendChild(background) 
                     })
               </script>
 	</body>
