@@ -111,12 +111,7 @@
 								</header>
 								<footer class="major">
 									<ul class="actions special">
-                                        <li>
-                                            <a href="https://www.crowdfunder.co.uk/good-old-days-letshangon-charity-single" target="_blank">
-                                                <img style="height: 208px; width: 208px" src="https://i1.sndcdn.com/artworks-J3BLAzuyEeFq5JIT-RudzUQ-t500x500.jpg" />
-                                                </br><strong>Good Old Days: Official Charity Single</strong>
-                                            </a>
-                                        </li>
+                                        
                                         <li>
                                             <a href="https://www.wigantoday.net/whats-on/arts-and-entertainment/bands-online-success-nostalgic-wigan-song-2931758" target="_blank">
                                                 <img style="height: 208px; width: 371px" src="https://www.wigantoday.net/webimg/QVNIMTE2NTM2Mzk4.jpg?crop=982:524,smart&width=640" />
@@ -308,7 +303,6 @@
                             var date = doc.date.split('-');
                             date = date[2] + '/' + date[1]  + '/' + date[0]
                             doc.date = date
-                            console.log('doc', doc)
                             var gigItem = `<h3 class="gig">${doc.name}</h3><p>${doc.date}</br>${doc.location}</br><span style="font-size: 18px">${doc.note}</span></p>`;
                             var item = document.getElementById('gigList').appendChild(document.createElement("LI"));
                             item.innerHTML = gigItem;
