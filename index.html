@@ -291,21 +291,73 @@
 
                 dayjs.locale('en-gb')
 
-                firebase.firestore().collection('users').doc('OwGoFsRyzRZT4ZDlpntujCDVlW83').collection('gigs').get()
-                    .then((data) => {
-                        var docs = data.docs.map((doc) => {
-                            var doc = { id: doc.id, ...doc.data() }         
-                            var date = doc.date.split('/');
-                            date = date[2] + '-' + date[1]  + '-' + date[0]
-                            doc.date = date
-                            return doc
-                        })
+                // firebase.firestore().collection('users').doc('OwGoFsRyzRZT4ZDlpntujCDVlW83').collection('gigs').get()
+                //     .then((data) => {
+                //         var docs = data.docs.map((doc) => {
+                //             var doc = { id: doc.id, ...doc.data() }         
+                //             var date = doc.date.split('/');
+                //             date = date[2] + '-' + date[1]  + '-' + date[0]
+                //             doc.date = date
+                //             return doc
+                //         })
                         
-                        docs = docs.filter((gig) => {
-                            // console.log('TEST', dayjs(), gig.date, dayjs(gig.date), dayjs(gig.date).isBefore(dayjs()))
+                //         docs = docs.filter((gig) => {
+                //             // console.log('TEST', dayjs(), gig.date, dayjs(gig.date), dayjs(gig.date).isBefore(dayjs()))
                     
-                            return dayjs().subtract(2, 'day').isBefore(dayjs(gig.date)) && gig.date.split('-')[1] <= 12
-                        })
+                //             return dayjs().subtract(2, 'day').isBefore(dayjs(gig.date)) && gig.date.split('-')[1] <= 12
+                //         })
+
+                //         docs = docs.sort((a, b) => {
+                //             return !dayjs(a.date).isBefore(dayjs(b.date))
+                //         })
+
+                //         if(docs.length && docs.length >= 6) {
+                //             docs = docs.slice(0, 6)
+                //         }
+
+                //         var cta = `We don't have anything upcoming at the moment, come back soon!</br>Or, contact us at <a href="mailto:qsoearth@gmail.com">qsoearth@gmail.com</a> to book a show.`
+                //         if(docs.length > 0) {
+                //             cta = `<a href="https://www.facebook.com/pg/qsoearth/events/?ref=page_internal" target="_blank" class="button">Live Shows</a>`
+                //         }
+
+                //         document.getElementById('buttonifgigs').innerHTML = cta                
+
+                //         docs.map((doc) => {
+                //             var date = doc.date.split('-');
+                //             date = date[2] + '/' + date[1]  + '/' + date[0]
+                //             doc.date = date
+                //             var gigItem = `<h3 class="gig">${doc.name}</h3><p>${doc.date}</br>${doc.location}</br><span style="font-size: 18px">${doc.note}</span></p>`;
+                //             var item = document.getElementById('gigList').appendChild(document.createElement("LI"));
+                //             item.innerHTML = gigItem;
+                //         });
+
+                //     })
+                var docs = [
+                    {
+                        name: 'The Crown',
+                        date: '1st May 2021',
+                        location: 'Worthington',
+                        note: ''
+                    },
+                    {
+                        name: 'Tap n Barrel',
+                        date: '6th June 2021',
+                        location: 'Wigan',
+                        note: ''
+                    },
+                    {
+                        name: '1984',
+                        date: '12th June 2021',
+                        location: 'Wigan',
+                        note: ''
+                    },
+                ]
+
+                        //  docs = docs.filter((gig) => {
+                        //     // console.log('TEST', dayjs(), gig.date, dayjs(gig.date), dayjs(gig.date).isBefore(dayjs()))
+                    
+                        //     return dayjs().subtract(2, 'day').isBefore(dayjs(gig.date)) && gig.date.split('-')[1] <= 12
+                        // })
 
                         docs = docs.sort((a, b) => {
                             return !dayjs(a.date).isBefore(dayjs(b.date))
@@ -323,15 +375,11 @@
                         document.getElementById('buttonifgigs').innerHTML = cta                
 
                         docs.map((doc) => {
-                            var date = doc.date.split('-');
-                            date = date[2] + '/' + date[1]  + '/' + date[0]
-                            doc.date = date
+                            
                             var gigItem = `<h3 class="gig">${doc.name}</h3><p>${doc.date}</br>${doc.location}</br><span style="font-size: 18px">${doc.note}</span></p>`;
                             var item = document.getElementById('gigList').appendChild(document.createElement("LI"));
                             item.innerHTML = gigItem;
                         });
-
-                    })
               </script>
 	</body>
 </html>
