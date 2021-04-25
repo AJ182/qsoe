@@ -78,11 +78,6 @@ input, select, textarea {
 	font-weight: bold;
 }
 
-.songkick {
-    max-width: 400px;
-    width: 100%;
-}
-
 .photoStripItem {
 	width: 100%;
 	text-decoration: none;
